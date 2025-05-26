@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="/static/css/res.css">
+    <!-- Bootstrap CSS for styling (optional) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="text-center mb-4">
+                    <h1 class="display-4">Prediction Result</h1>
+                </div>
+                <div class="card p-4 shadow-lg">
+                    <div class="result">
+                        <h2>Your Prediction:</h2>
+                        <p>{{ predictions }}</p>
+                        <div class='results'>
+                            {% if predictions <= 50 %}
+                                <h1>Predictions: <span class='good'>Good</span></h1>
+                            {% elif predictions <= 100 %}
+                                <h1>Predictions: <span class='moderate'>Moderate</span></h1>
+                            {% elif predictions <= 150 %}
+                                <h1>Predictions: <span class='unhealthy-sensitive'>Unhealthy for Sensitive Groups</span></h1>
+                            {% elif predictions <= 200 %}
+                                <h1>Predictions: <span class='unhealthy'>Unhealthy</span></h1>
+                            {% elif predictions <= 300 %}
+                                <h1>Predictions: <span class='very-unhealthy'>Very Unhealthy</span></h1>
+                            {% else %}
+                                <h1>Predictions: <span class='hazardous'>Hazardous</span></h1>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">Go Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
